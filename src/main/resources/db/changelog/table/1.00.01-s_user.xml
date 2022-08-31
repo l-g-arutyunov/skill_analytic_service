@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <property dbms="postgresql,mssql,oracle" value="false" name="autoIncrement"/>
+    <property dbms="h2" value="true" name="autoIncrement"/>
+
+    <changeSet id="1.00.01-s_user-0001" author="sthoomy" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="s_user_id_seq"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="s_user_id_seq" schemaName="s" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-s_user-0002" author="sthoomy" failOnError="true" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="s_user"/>
+            </not>
+        </preConditions>
+        <createTable tableName="s_user" schemaName="s">
+            <column name="id" type="bigint"
+                    defaultValueSequenceNext="s_user_id_seq" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="sthoomy" id="1.00.01-s_user-0003">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="s_user"/>
+                <not>
+                    <indexExists indexName="s_user_index_0"/>
+                </not>
+            </and>
+        </preConditions>
+        <createIndex indexName="s_user_index_0" tableName="s_user" schemaName="s" clustered="true">
+            <column name="id"/>
+            <column name="name"/>
+        </createIndex>
+    </changeSet>
+
+</databaseChangeLog>

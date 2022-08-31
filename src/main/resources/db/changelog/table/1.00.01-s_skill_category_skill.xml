@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <property dbms="postgresql,mssql,oracle" value="false" name="autoIncrement"/>
+    <property dbms="h2" value="true" name="autoIncrement"/>
+
+    <changeSet id="1.00.01-s_skill_category_skill-0001" author="sthoomy" failOnError="true">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="s_skill_category_skill"/>
+            </not>
+        </preConditions>
+        <createTable tableName="s_skill_category_skill" schemaName="s">
+            <column name="s_skill_category_id" type="bigint">
+                <constraints foreignKeyName="fk_s_skill_category_skill_s_skill_category_id" referencedTableName="s_skill_category" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+            <column name="s_skill_id" type="bigint">
+                <constraints foreignKeyName="fk_s_skill_category_skill_s_skill_id" referencedTableName="s_skill" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

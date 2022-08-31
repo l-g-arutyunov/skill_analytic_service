@@ -1,0 +1,9 @@
+id;name;parent_id;description;skill_category_id
+1;sskill_1;1;spring;2
+2;sskill_2;1;maven;3
+3;sskill_3;1;spring;1
+4;sskill_4;2;git;2
+5;sskill_5;2;spring;1
+
+
+
