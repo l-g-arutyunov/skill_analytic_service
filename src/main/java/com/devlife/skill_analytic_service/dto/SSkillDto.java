@@ -16,5 +16,4 @@ public class SSkillDto implements Serializable {
     private String name;
     private Long parentId;
     private String description;
-    private SSkillCategoryDto sSkillCategoryDtoId;
 }

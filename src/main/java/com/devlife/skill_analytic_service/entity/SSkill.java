@@ -1,6 +1,5 @@
 package com.devlife.skill_analytic_service.entity;
 
-import com.devlife.skill_analytic_service.entity.embeddable.SSkillCategorySkillId;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,7 +21,4 @@ public class SSkill {
     @Column
     private String description;
 
-    @JoinColumn
-    @ManyToOne
-    private SSkillCategory sSkillCategory;
 }

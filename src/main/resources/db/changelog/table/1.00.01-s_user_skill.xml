@@ -10,10 +10,10 @@
     <changeSet id="1.00.01-s_user_skill-0001" author="sthoomy" runInTransaction="false">
         <preConditions onFail="MARK_RAN">
             <not>
-                <sequenceExists sequenceName="s_user_skill_id_seq"/>
+                <sequenceExists sequenceName="s_user_skill_id_seq" schemaName="s"/>
             </not>
         </preConditions>
-        <createSequence sequenceName="s_user_skill_id_seq" startValue="1" incrementBy="1"/>
+        <createSequence sequenceName="s_user_skill_id_seq" schemaName="s" startValue="1" incrementBy="1"/>
     </changeSet>
 
     <changeSet id="1.00.01-s_user_skill-0002" author="sthoomy" failOnError="true" >
@@ -24,7 +24,7 @@
         </preConditions>
         <createTable tableName="s_user_skill" schemaName="s">
             <column name="id" type="bigint"
-                    defaultValueSequenceNext="s_user_skill_id_seq" autoIncrement="${autoIncrement}">
+                    defaultValueSequenceNext="s_user_skill_id_seq">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="acquire_date" type="timestamp">
@@ -49,13 +49,13 @@
     <changeSet author="sthoomy" id="1.00.01-s_user_skill-0003">
         <preConditions onFail="MARK_RAN">
             <and>
-                <tableExists tableName="s_user_skill"/>
+                <tableExists tableName="s_user_skill" schemaName="s"/>
                 <not>
-                    <indexExists indexName="s_user_skill_index_0"/>
+                    <indexExists indexName="s_user_skill_index_0" schemaName="s"/>
                 </not>
             </and>
         </preConditions>
-        <createIndex indexName="s_user_skill_index_0" tableName="s_user_skill" clustered="true">
+        <createIndex indexName="s_user_skill_index_0" tableName="s_user_skill" schemaName="s" clustered="true">
             <column name="id"/>
             <column name="acquire_date"/>
             <column name="user_id"/>

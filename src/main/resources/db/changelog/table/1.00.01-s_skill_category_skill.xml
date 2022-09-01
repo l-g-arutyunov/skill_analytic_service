@@ -10,7 +10,7 @@
     <changeSet id="1.00.01-s_skill_category_skill-0001" author="sthoomy" failOnError="true">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="s_skill_category_skill"/>
+                <tableExists tableName="s_skill_category_skill" schemaName="s"/>
             </not>
         </preConditions>
         <createTable tableName="s_skill_category_skill" schemaName="s">
