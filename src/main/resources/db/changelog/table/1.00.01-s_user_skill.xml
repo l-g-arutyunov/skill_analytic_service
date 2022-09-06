@@ -27,7 +27,7 @@
                     defaultValueSequenceNext="s_user_skill_id_seq">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="acquire_date" type="timestamp">
+            <column name="acquire_date" type="date">
                 <constraints nullable="false"/>
             </column>
             <column name="user_id" type="bigint">
@@ -39,8 +39,8 @@
                              nullable="false"/>
             </column>
             <column name="level" type="bigint"/>
-            <column name="s_grade_id" type="bigint">
-                <constraints foreignKeyName="fk_s_user_skill_s_grade_id" referencedTableName="s_grade" referencedTableSchemaName="s" referencedColumnNames="id"
+            <column name="grade_id" type="bigint">
+                <constraints foreignKeyName="fk_user_skill_grade_id" referencedTableName="s_grade" referencedTableSchemaName="s" referencedColumnNames="id"
                              nullable="false"/>
             </column>
         </createTable>
@@ -61,7 +61,7 @@
             <column name="user_id"/>
             <column name="skill_id"/>
             <column name="level"/>
-            <column name="s_grade_id"/>
+            <column name="grade_id"/>
         </createIndex>
     </changeSet>
 

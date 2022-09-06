@@ -27,8 +27,12 @@
                     defaultValueSequenceNext="s_experience_id_seq" >
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="value" type="numeric(15,2)">
+            <column name="value_exp" type="bigint">
                 <constraints nullable="false"/>
+            </column>
+            <column name="user_skill_id" type="bigint">
+                <constraints foreignKeyName="fk_experience_user_skill_id" referencedTableName="s_user_skill" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
             </column>
         </createTable>
     </changeSet>
@@ -44,7 +48,8 @@
         </preConditions>
         <createIndex indexName="s_experience_index_0" tableName="s_experience" schemaName="s" clustered="true">
             <column name="id"/>
-            <column name="value"/>
+            <column name="value_exp"/>
+            <column name="user_skill_id"/>
         </createIndex>
     </changeSet>
 </databaseChangeLog>

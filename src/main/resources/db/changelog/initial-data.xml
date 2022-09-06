@@ -134,25 +134,6 @@
                     type="varchar(30)"/>
         </loadData>
     </changeSet>
-    <changeSet author="sthoomy" id="102">
-        <loadData catalogName="data"
-                  commentLineStartsWith="#"
-                  encoding="UTF-8"
-                  file="data/s_experience.csv"
-                  quotchar="'"
-                  relativeToChangelogFile="true"
-                  schemaName="s"
-                  separator=";"
-                  tableName="s_experience"
-                  usePreparedStatements="true">
-            <column header="id"
-                    name="id"
-                    type="bigint"/>
-            <column header="value"
-                    name="value"
-                    type="numeric(15,2)"/>
-        </loadData>
-    </changeSet>
     <changeSet author="sthoomy" id="106">
         <loadData catalogName="data"
                   commentLineStartsWith="#"
@@ -205,8 +186,30 @@
             <column header="level"
                     name="level"
                     type="bigint"/>
-            <column header="s_grade_id"
-                    name="s_grade_id"
+            <column header="grade_id"
+                    name="grade_id"
+                    type="bigint"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="102">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_experience.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_experience"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="value"
+                    name="value"
+                    type="bigint"/>
+            <column header="user_skill_id"
+                    name="user_skill_id"
                     type="bigint"/>
         </loadData>
     </changeSet>
