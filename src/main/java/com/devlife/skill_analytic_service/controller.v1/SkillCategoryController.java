@@ -20,7 +20,7 @@ public class SkillCategoryController {
 
     @GetMapping("skill_category/{id}")
     SkillCategoryDto getSkillCategory(@PathVariable("id") Long id) {
-        return (service.getSkillCategory(id));
+        return service.getSkillCategory(id);
     }
 
     @GetMapping("skill_category")

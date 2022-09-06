@@ -20,7 +20,7 @@ public class ExperienceController {
 
     @GetMapping("experience/{id}")
     ExperienceDto getExperience(@PathVariable("id") Long id) {
-        return (service.getExperience(id));
+        return service.getExperience(id);
     }
 
     @GetMapping("experience")

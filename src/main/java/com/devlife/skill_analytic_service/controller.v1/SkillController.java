@@ -20,7 +20,7 @@ public class SkillController {
 
     @GetMapping("skill/{id}")
     SkillDto getSkill(@PathVariable("id") Long id) {
-        return (service.getSkill(id));
+        return service.getSkill(id);
     }
 
     @GetMapping("skill")

@@ -20,7 +20,7 @@ public class GradeController {
 
     @GetMapping("grade/{id}")
     GradeDto getGrade(@PathVariable("id") Long id) {
-        return (service.getGrade(id));
+        return service.getGrade(id);
     }
 
     @GetMapping("grade")

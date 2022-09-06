@@ -20,7 +20,7 @@ public class DifficultyController {
 
     @GetMapping("difficulty/{id}")
     DifficultyDto getDifficulty(@PathVariable("id") Long id) {
-        return (service.getDifficulty(id));
+        return service.getDifficulty(id);
     }
 
     @GetMapping("difficulty")
