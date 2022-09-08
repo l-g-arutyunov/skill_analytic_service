@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <changeSet author="sthoomy" id="105">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_skill_category_kind.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_skill_category_kind"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="name"
+                    name="name"
+                    type="varchar(30)"/>
+            <column header="description"
+                    name="description"
+                    type="varchar(255)"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="104">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_skill_category.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_skill_category"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="name"
+                    name="name"
+                    type="varchar(30)"/>
+            <column header="skill_category_kind_id"
+                    name="skill_category_kind_id"
+                    type="bigint"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="103">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_skill.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_skill"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="name"
+                    name="name"
+                    type="varchar(30)"/>
+            <column header="parent_id"
+                    name="parent_id"
+                    type="bigint"/>
+            <column header="description"
+                    name="description"
+                    type="varchar(255)"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="108">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_grade.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_grade"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="name"
+                    name="name"
+                    type="varchar(30)"/>
+            <column header="description"
+                    name="description"
+                    type="varchar(255)"/>
+            <column header="experience_value"
+                    name="experience_value"
+                    type="bigint"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="109">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_skill_category_skill.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_skill_category_skill"
+                  usePreparedStatements="true">
+            <column header="s_skill_category_id"
+                    name="s_skill_category_id"
+                    type="bigint"/>
+            <column header="s_skill_id"
+                    name="s_skill_id"
+                    type="bigint"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="101">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_user.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_user"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="name"
+                    name="name"
+                    type="varchar(30)"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="106">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_difficulty.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_difficulty"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="name"
+                    name="name"
+                    type="varchar(30)"/>
+            <column header="coefficient"
+                    name="coefficient"
+                    type="numeric(10,2)"/>
+            <column header="skill_id"
+                    name="skill_id"
+                    type="bigint"/>
+
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="107">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_user_skill.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_user_skill"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="acquire_date"
+                    name="acquire_date"
+                    type="timestamp"/>
+            <column header="user_id"
+                    name="user_id"
+                    type="bigint"/>
+            <column header="skill_id"
+                    name="skill_id"
+                    type="bigint"/>
+            <column header="level"
+                    name="level"
+                    type="bigint"/>
+            <column header="grade_id"
+                    name="grade_id"
+                    type="bigint"/>
+        </loadData>
+    </changeSet>
+    <changeSet author="sthoomy" id="102">
+        <loadData catalogName="data"
+                  commentLineStartsWith="#"
+                  encoding="UTF-8"
+                  file="data/s_experience.csv"
+                  quotchar="'"
+                  relativeToChangelogFile="true"
+                  schemaName="s"
+                  separator=";"
+                  tableName="s_experience"
+                  usePreparedStatements="true">
+            <column header="id"
+                    name="id"
+                    type="bigint"/>
+            <column header="value"
+                    name="value"
+                    type="bigint"/>
+            <column header="user_skill_id"
+                    name="user_skill_id"
+                    type="bigint"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

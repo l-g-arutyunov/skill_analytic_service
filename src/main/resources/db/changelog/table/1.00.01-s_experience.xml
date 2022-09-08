@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <property dbms="postgresql,mssql,oracle" value="false" name="autoIncrement"/>
+    <property dbms="h2" value="true" name="autoIncrement"/>
+
+    <changeSet id="1.00.01-s_experience-0001" author="sthoomy" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="s_experience_id_seq" schemaName="s"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="s_experience_id_seq" schemaName="s" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-s_experience-0002" author="sthoomy" failOnError="true" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="s_experience"/>
+            </not>
+        </preConditions>
+        <createTable tableName="s_experience" schemaName="s">
+            <column name="id" type="bigint"
+                    defaultValueSequenceNext="s_experience_id_seq" >
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="value_exp" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_skill_id" type="bigint">
+                <constraints foreignKeyName="fk_experience_user_skill_id" referencedTableName="s_user_skill" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="sthoomy" id="1.00.01-s_experience-0003">
+        <preConditions onFail="MARK_RAN">
+            <and>
+                <tableExists tableName="s_experience" schemaName="s"/>
+                <not>
+                    <indexExists indexName="s_experience_index_0" schemaName="s"/>
+                </not>
+            </and>
+        </preConditions>
+        <createIndex indexName="s_experience_index_0" tableName="s_experience" schemaName="s" clustered="true">
+            <column name="id"/>
+            <column name="value_exp"/>
+            <column name="user_skill_id"/>
+        </createIndex>
+    </changeSet>
+</databaseChangeLog>
+
