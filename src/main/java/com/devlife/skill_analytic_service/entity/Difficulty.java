@@ -16,7 +16,7 @@ public class Difficulty {
     private String name;
 
     @Column(name = "coefficient")
-    private String coefficient;
+    private Long coefficient;
 
     @ManyToOne(targetEntity = Skill.class)
     @JoinColumn(name = "skill_id")
