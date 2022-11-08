@@ -19,19 +19,25 @@ class UserMapperTest {
 
     @Test
     @DisplayName("Конвертируем ДТО User в Энтити")
-    void convertToEntity() {
+    void convertToEntityTest_OK() {
         User referenceUser = new User();
         referenceUser.setId(1L);
         referenceUser.setName("name");
-        UserDto userDto = UserDto.builder().id(1L).name("name").build();
+        UserDto userDto = UserDto.builder()
+                .id(1L)
+                .name("name")
+                .build();
         User user = mapper.convertToEntity(userDto);
         assertEquals(referenceUser,user);
     }
 
     @Test
     @DisplayName("Конвертируем Энтити User в ДТО ")
-    void convertToDto() {
-        UserDto referenceUserDto = UserDto.builder().id(1L).name("name").build();
+    void convertToDtoTest_OK() {
+        UserDto referenceUserDto = UserDto.builder()
+                .id(1L)
+                .name("name")
+                .build();
         User user = new User();
         user.setId(1L);
         user.setName("name");

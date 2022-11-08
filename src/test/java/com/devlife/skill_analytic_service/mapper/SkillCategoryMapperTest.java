@@ -20,22 +20,28 @@ class SkillCategoryMapperTest {
 
     @Test
     @DisplayName("Конвертируем ДТО SkillCategory в Энтити")
-    void convertToEntity() {
+    void convertToEntityTest_OK() {
         SkillCategory referenceSkillCategory = new SkillCategory();
         referenceSkillCategory.setId(1L);
         referenceSkillCategory.setName("name");
         referenceSkillCategory.setSkillCategoryKind(new SkillCategoryKind());
-        SkillCategoryDto skillCategoryDto = SkillCategoryDto.builder().id(1L)
-                .name("name").skillCategoryKind(new SkillCategoryKindDto()).build();
+        SkillCategoryDto skillCategoryDto = SkillCategoryDto.builder()
+                .id(1L)
+                .name("name")
+                .skillCategoryKind(new SkillCategoryKindDto())
+                .build();
         SkillCategory skillCategory = mapper.convertToEntity(skillCategoryDto);
         assertEquals(referenceSkillCategory,skillCategory);
     }
 
     @Test
     @DisplayName("Конвертируем Энтити SkillCategory в ДТО ")
-    void convertToDto() {
-        SkillCategoryDto referenceSkillCategoryDto = SkillCategoryDto.builder().id(1L)
-                .name("name").skillCategoryKind(new SkillCategoryKindDto()).build();
+    void convertToDtoTest_OK() {
+        SkillCategoryDto referenceSkillCategoryDto = SkillCategoryDto.builder()
+                .id(1L)
+                .name("name")
+                .skillCategoryKind(new SkillCategoryKindDto())
+                .build();
         SkillCategory skillCategory = new SkillCategory();
         skillCategory.setId(1L);
         skillCategory.setName("name");

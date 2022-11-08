@@ -26,8 +26,12 @@ class DifficultyMapperTest {
         referenceDifficulty.setName("name");
         referenceDifficulty.setCoefficient(1L);
         referenceDifficulty.setSkill(new Skill());
-        DifficultyDto difficultyDto = DifficultyDto.builder().id(1L).name("name")
-                .coefficient(1L).skill(new SkillDto()).build();
+        DifficultyDto difficultyDto = DifficultyDto.builder()
+                .id(1L)
+                .name("name")
+                .coefficient(1L)
+                .skill(new SkillDto())
+                .build();
         Difficulty difficulty = mapper.convertToEntity(difficultyDto);
         assertEquals(referenceDifficulty,difficulty);
     }
@@ -35,8 +39,12 @@ class DifficultyMapperTest {
     @Test
     @DisplayName("Конвертируем Энтити Difficulty в ДТО ")
     void convertToDtoTest_OK() {
-        DifficultyDto referenceDifficultyDto = DifficultyDto.builder().id(1L).name("name")
-                .coefficient(1L).skill(new SkillDto()).build();
+        DifficultyDto referenceDifficultyDto = DifficultyDto.builder()
+                .id(1L)
+                .name("name")
+                .coefficient(1L)
+                .skill(new SkillDto())
+                .build();
         Difficulty difficulty = new Difficulty();
         difficulty.setId(1L);
         difficulty.setName("name");

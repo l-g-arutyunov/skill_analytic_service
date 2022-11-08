@@ -18,23 +18,31 @@ class SkillMapperTest {
 
     @Test
     @DisplayName("Конвертируем ДТО Skill в Энтити")
-    void convertToEntity() {
+    void convertToEntityTest_OK() {
         Skill referenceSkill = new Skill();
         referenceSkill.setId(1L);
         referenceSkill.setName("name");
         referenceSkill.setDescription("description");
         referenceSkill.setParentId(1L);
-        SkillDto skillDto = SkillDto.builder().id(1L).name("name")
-                .description("description").parentId(1L).build();
+        SkillDto skillDto = SkillDto.builder()
+                .id(1L)
+                .name("name")
+                .description("description")
+                .parentId(1L)
+                .build();
         Skill skill = mapper.convertToEntity(skillDto);
         assertEquals(referenceSkill,skill);
     }
 
     @Test
     @DisplayName("Конвертируем ДТО Skill в Энтити")
-    void convertToDto() {
-        SkillDto referenceSkillDto = SkillDto.builder().id(1L).name("name")
-                .description("description").parentId(1L).build();
+    void convertToDtoTest_OK() {
+        SkillDto referenceSkillDto = SkillDto.builder()
+                .id(1L)
+                .name("name")
+                .description("description")
+                .parentId(1L)
+                .build();
         Skill skill = new Skill();
         skill.setId(1L);
         skill.setName("name");

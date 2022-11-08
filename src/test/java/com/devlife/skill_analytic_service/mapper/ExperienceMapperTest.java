@@ -25,8 +25,11 @@ class ExperienceMapperTest {
         referenceExperience.setId(1L);
         referenceExperience.setValueExp(1L);
         referenceExperience.setUserSkill(new UserSkill());
-        ExperienceDto experienceDto = ExperienceDto.builder().id(1L).valueExp(1L)
-                .userSkill(new UserSkillDto()).build();
+        ExperienceDto experienceDto = ExperienceDto.builder()
+                .id(1L)
+                .valueExp(1L)
+                .userSkill(new UserSkillDto())
+                .build();
         Experience experience = mapper.convertToEntity(experienceDto);
         assertEquals(referenceExperience,experience);
     }
@@ -34,8 +37,11 @@ class ExperienceMapperTest {
     @Test
     @DisplayName("Конвертируем Энтити Experience в ДТО ")
     void convertToDtoTest_OK() {
-        ExperienceDto referenceExperienceDto = ExperienceDto.builder().id(1L).valueExp(1L)
-                .userSkill(new UserSkillDto()).build();
+        ExperienceDto referenceExperienceDto = ExperienceDto.builder()
+                .id(1L)
+                .valueExp(1L)
+                .userSkill(new UserSkillDto())
+                .build();
         Experience experience = new Experience();
         experience.setId(1L);
         experience.setValueExp(1L);

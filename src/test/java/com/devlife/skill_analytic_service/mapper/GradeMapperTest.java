@@ -18,23 +18,31 @@ class GradeMapperTest {
 
     @Test
     @DisplayName("Конвертируем ДТО Grade в Энтити")
-    void convertToEntity() {
+    void convertToEntityTest_OK() {
         Grade referenceGrade = new Grade();
         referenceGrade.setId(1L);
         referenceGrade.setName("name");
         referenceGrade.setExperienceValue(1L);
         referenceGrade.setDescription("description");
-        GradeDto gradeDto = GradeDto.builder().id(1L).description("description")
-                .experienceValue(1L).name("name").build();
+        GradeDto gradeDto = GradeDto.builder()
+                .id(1L)
+                .description("description")
+                .experienceValue(1L)
+                .name("name")
+                .build();
         Grade grade = mapper.convertToEntity(gradeDto);
         assertEquals(referenceGrade,grade);
     }
 
     @Test
     @DisplayName("Конвертируем Энтити Grade в ДТО ")
-    void convertToDto() {
-        GradeDto referenceGradeDto = GradeDto.builder().id(1L).description("description")
-                .experienceValue(1L).name("name").build();
+    void convertToDtoTest_OK() {
+        GradeDto referenceGradeDto = GradeDto.builder()
+                .id(1L)
+                .description("description")
+                .experienceValue(1L)
+                .name("name")
+                .build();
         Grade grade=new Grade();
         grade.setId(1L);
         grade.setName("name");

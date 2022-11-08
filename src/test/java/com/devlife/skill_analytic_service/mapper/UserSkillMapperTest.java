@@ -26,7 +26,7 @@ class UserSkillMapperTest {
 
     @Test
     @DisplayName("Конвертируем ДТО UserSkill в Энтити")
-    void convertToEntity() {
+    void convertToEntityTest_OK() {
         UserSkill referenceUserSkill = new UserSkill();
         referenceUserSkill.setId(1L);
         referenceUserSkill.setUser(new User());
@@ -34,19 +34,28 @@ class UserSkillMapperTest {
         referenceUserSkill.setGrade(new Grade());
         referenceUserSkill.setLevel(1L);
         referenceUserSkill.setAcquireData(LocalDate.EPOCH);
-        UserSkillDto userSkillDto = UserSkillDto.builder().id(1L)
-                .skill(new SkillDto()).user(new UserDto()).grade(new GradeDto())
-                .acquireData(LocalDate.EPOCH).level(1L).build();
+        UserSkillDto userSkillDto = UserSkillDto.builder()
+                .id(1L)
+                .skill(new SkillDto())
+                .user(new UserDto())
+                .grade(new GradeDto())
+                .acquireData(LocalDate.EPOCH)
+                .level(1L)
+                .build();
         UserSkill userSkill = mapper.convertToEntity(userSkillDto);
         assertEquals(referenceUserSkill,userSkill);
     }
 
     @Test
     @DisplayName("Конвертируем Энтити UserSkill в ДТО ")
-    void convertToDto() {
+    void convertToDtoTest_OK() {
         UserSkillDto referenceUserSkillDto = UserSkillDto.builder().id(1L)
-                .skill(new SkillDto()).user(new UserDto()).grade(new GradeDto())
-                .acquireData(LocalDate.EPOCH).level(1L).build();
+                .skill(new SkillDto())
+                .user(new UserDto())
+                .grade(new GradeDto())
+                .acquireData(LocalDate.EPOCH)
+                .level(1L)
+                .build();
         UserSkill userSkill = new UserSkill();
         userSkill.setId(1L);
         userSkill.setUser(new User());

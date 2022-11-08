@@ -23,7 +23,7 @@ class SkillCategorySkillMapperTest {
 
     @Test
     @DisplayName("Конвертируем ДТО SkillCategorySkill в Энтити")
-    void convertToEntity() {
+    void convertToEntityTest_OK() {
         SkillCategorySkill referenceSkillCategorySkill = new SkillCategorySkill();
         referenceSkillCategorySkill.setSkillCategorySkillId(null);
         SkillCategorySkillDto skillCategorySkillDto = SkillCategorySkillDto.builder().build();
@@ -33,7 +33,7 @@ class SkillCategorySkillMapperTest {
 
     @Test
     @DisplayName("Конвертируем Энтити SkillCategorySkill в ДТО ")
-    void convertToDto() {
+    void convertToDtoTest_OK() {
         SkillCategorySkillDto referenceSkillCategorySkillDto = SkillCategorySkillDto.builder().build();
         SkillCategorySkill skillCategorySkill = new SkillCategorySkill();
         skillCategorySkill.setSkillCategorySkillId(null);
