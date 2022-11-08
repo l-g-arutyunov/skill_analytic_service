@@ -147,6 +147,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>skill_analytic_service</finalName>
     </build>
 
 </project>
