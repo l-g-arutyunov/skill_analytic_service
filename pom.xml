@@ -14,7 +14,7 @@
     <name>skill_analytic_service</name>
     <description>skill_analytic_service</description>
     <properties>
-        <java.version>18</java.version>
+        <java.version>17</java.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
     </properties>
     <dependencies>

@@ -7,13 +7,6 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: /projects
-        backend:
-          service:
-            name: pf-analytic-service
-            port:
-              number: 80
-      - pathType: Prefix
         path: /skills
         backend:
           service:
