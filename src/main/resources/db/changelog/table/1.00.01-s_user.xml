@@ -48,4 +48,63 @@
         </createIndex>
     </changeSet>
 
+    <changeSet id="1.00.01-user-0004" author="Bofh82" failOnError="true" runInTransaction="false">
+        <preConditions onFail ="MARK_RAN">
+            <tableExists tableName="s_user" schemaName="s"/>
+            <not>
+                <columnExists tableName="s_user" columnName="external_id"/>
+            </not>
+        </preConditions>
+        <addColumn tableName="s_user">
+            <column name="external_id" type="bigint" remarks="External key of user in master system">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1.00.01-user-0005" author="Bofh82" failOnError="true">
+        <preConditions onFail ="MARK_RAN">
+            <tableExists tableName="s_user" schemaName="s"/>
+            <not>
+                <columnExists tableName="s_user" columnName="first_name"/>
+                <columnExists tableName="s_user" columnName="last_name"/>
+                <columnExists tableName="s_user" columnName="nick_name"/>
+            </not>
+        </preConditions>
+        <comment>Add column: first_name, last_name, nick_name</comment>
+        <addColumn tableName="s_user">
+            <column name="first_name" type="varchar(30)" remarks="First name">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <addColumn tableName="s_user">
+            <column name="last_name" type="varchar(30)" remarks="Last name">
+                <constraints nullable="true"/>
+            </column>
+        </addColumn>
+        <addColumn tableName="s_user">
+            <column name="nickname" type="varchar(36)" remarks="Nickname">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="1.00.01-user-0006" author="Bofh82" failOnError="true" runInTransaction="false">
+        <preConditions onFail ="MARK_RAN">
+            <tableExists tableName="s_user" schemaName="s"/>
+            <columnExists tableName="s_user" columnName="name"/>
+        </preConditions>
+        <comment>delete column: name</comment>
+        <dropColumn tableName="s_user" columnName="name"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-user-0007" author="Bofh82" failOnError="true" runInTransaction="false">
+        <preConditions onFail ="MARK_RAN">
+            <tableExists tableName="s_user" schemaName="s"/>
+            <indexExists tableName="s_user" indexName="s_user_index_0"/>
+        </preConditions>
+        <comment>delete index: s_user_index_0</comment>
+        <dropIndex tableName="s_user" indexName="s_user_index_0"/>
+    </changeSet>
+
 </databaseChangeLog>
