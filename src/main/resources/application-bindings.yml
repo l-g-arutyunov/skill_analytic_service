@@ -21,4 +21,4 @@ spring:
         #consumers
         userConsumer-in-0:
           destination: ${USER_TOPIC:user-event}
-          group: ${PF_GROUP_ID:skill}
+          group: ${SKILL_GROUP_ID:skill}
