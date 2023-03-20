@@ -2,7 +2,6 @@ package com.devlife.skill_analytic_service.mapper;
 
 import com.devlife.skill_analytic_service.dto.UserDto;
 import com.devlife.skill_analytic_service.entity.User;
-import org.jose4j.jwk.Use;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +21,10 @@ class UserMapperTest {
     void convertToEntityTest_OK() {
         User referenceUser = new User();
         referenceUser.setId(1L);
-        referenceUser.setName("name");
+        referenceUser.setNickName("nickname");
         UserDto userDto = UserDto.builder()
                 .id(1L)
-                .name("name")
+                .nickName("nickname")
                 .build();
         User user = mapper.convertToEntity(userDto);
         assertEquals(referenceUser,user);
@@ -36,11 +35,11 @@ class UserMapperTest {
     void convertToDtoTest_OK() {
         UserDto referenceUserDto = UserDto.builder()
                 .id(1L)
-                .name("name")
+                .nickName("nickname")
                 .build();
         User user = new User();
         user.setId(1L);
-        user.setName("name");
+        user.setNickName("nickname");
         UserDto userDto = mapper.convertToDto(user);
         assertEquals(referenceUserDto,userDto);
     }
