@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+    <property dbms="postgresql,mssql,oracle" value="false" name="autoIncrement"/>
+    <property dbms="h2" value="true" name="autoIncrement"/>
+
+    <changeSet id="1.00.01-s_project-0001" author="Bofh82" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="s_project_id_seq"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="s_project_id_seq"  startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-s_project-0002" author="Bofh82" failOnError="true" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="s_project"/>
+            </not>
+        </preConditions>
+        <createTable tableName="s_project">
+            <column name="id" type="bigint" defaultValueSequenceNext="s_project_id_seq" remarks="s">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="external_id" type="bigint" remarks="external id from pf microservice"/>
+            <column name="name" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

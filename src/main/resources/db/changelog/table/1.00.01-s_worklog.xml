@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+    <property dbms="postgresql,mssql,oracle" value="false" name="autoIncrement"/>
+    <property dbms="h2" value="true" name="autoIncrement"/>
+
+    <changeSet id="1.00.01-s_worklog-0001" author="Bofh82" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <sequenceExists sequenceName="s_worklog_id_seq"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="s_worklog_id_seq" startValue="1" incrementBy="1"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-worklog-0002" author="Bofh82" failOnError="true" >
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="s_worklog"/>
+            </not>
+        </preConditions>
+        <createTable tableName="s_worklog">
+            <column name="id" type="bigint"
+                    defaultValueSequenceNext="s_worklog_id_seq">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="calc_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="skill_id" type="bigint">
+                <constraints foreignKeyName="fk_s_skill_id" referencedTableName="s_skill" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+            <column name="operation" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="operation_type" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="bigint">
+                <constraints foreignKeyName="fk_s_user_id" referencedTableName="s_user" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+            <column name="worklog_basis_id" type="bigint">
+                <constraints foreignKeyName="fk_s_worklog_basis_id" referencedTableName="s_worklog_basis" referencedTableSchemaName="s" referencedColumnNames="id"
+                             nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>
