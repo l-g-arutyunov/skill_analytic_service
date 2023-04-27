@@ -10,19 +10,19 @@
     <changeSet id="1.00.01-s_skill-0001" author="sthoomy" runInTransaction="false">
         <preConditions onFail="MARK_RAN">
             <not>
-                <sequenceExists sequenceName="s_skill_id_seq"/>
+                <sequenceExists sequenceName="s_skill_id_seq" schemaName="s"/>
             </not>
         </preConditions>
-        <createSequence sequenceName="s_skill_id_seq" startValue="1" incrementBy="1"/>
+        <createSequence sequenceName="s_skill_id_seq" schemaName="s" startValue="1" incrementBy="1"/>
     </changeSet>
 
     <changeSet id="1.00.01-s_skill-0002" author="sthoomy" failOnError="true" >
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="s_skill"/>
+                <tableExists tableName="s_skill" schemaName="s"/>
             </not>
         </preConditions>
-        <createTable tableName="s_skill">
+        <createTable tableName="s_skill" schemaName="s">
             <column name="id" type="bigint"
                     defaultValueSequenceNext="s_skill_id_seq" >
                 <constraints primaryKey="true" nullable="false"/>
@@ -38,13 +38,13 @@
     <changeSet author="sthoomy" id="1.00.01-s_skill-0003">
         <preConditions onFail="MARK_RAN">
             <and>
-                <tableExists tableName="s_skill"/>
+                <tableExists tableName="s_skill" schemaName="s"/>
                 <not>
-                    <indexExists indexName="s_skill_index_0"/>
+                    <indexExists indexName="s_skill_index_0" schemaName="s"/>
                 </not>
             </and>
         </preConditions>
-        <createIndex indexName="s_skill_index_0" tableName="s_skill" clustered="true">
+        <createIndex indexName="s_skill_index_0" tableName="s_skill" schemaName="s" clustered="true">
             <column name="id"/>
             <column name="name"/>
             <column name="parent_id"/>

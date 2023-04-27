@@ -1,7 +1,7 @@
 package com.devlife.skill_analytic_service.controller.v1;
 
-import com.devlife.skill_analytic_service.dto.SkillCategoryLinkDto;
-import com.devlife.skill_analytic_service.service.SkillCategoryLinkService;
+import com.devlife.skill_analytic_service.dto.SkillCategorySkillDto;
+import com.devlife.skill_analytic_service.service.SkillCategorySkillService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,20 +10,20 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/")
-public class SkillCategoryLinkController {
-    private final SkillCategoryLinkService service;
+public class SkillCategorySkillController {
+    private final SkillCategorySkillService service;
 
     @PostMapping("addSSkillCategorySkill")
-    void addSSkillCategorySkill(@RequestBody SkillCategoryLinkDto skillCategoryLinkDto) {
-        service.addSSkillCategorySkill(skillCategoryLinkDto);
+    void addSSkillCategorySkill(@RequestBody SkillCategorySkillDto skillCategorySkillDto) {
+        service.addSSkillCategorySkill(skillCategorySkillDto);
     }
     @GetMapping("sSkillCategorySkill/{id}")
-    SkillCategoryLinkDto getSSkillCategorySkill(@PathVariable("id") Long id) {
+    SkillCategorySkillDto getSSkillCategorySkill(@PathVariable("id") Long id) {
         return service.getSSkillCategorySkill(id);
     }
 
     @GetMapping("sSkillCategorySkill")
-    List<SkillCategoryLinkDto> getAllSSkillCategorySkills() {
+    List<SkillCategorySkillDto> getAllSSkillCategorySkills() {
         return service.getAllSSkillCategorySkills();
     }
 

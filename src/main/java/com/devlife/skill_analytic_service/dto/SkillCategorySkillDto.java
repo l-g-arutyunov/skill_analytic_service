@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class SkillCategoryLinkDto {
+public class SkillCategorySkillDto {
     private Long skillCategoryId;
     private Long skillId;
 }

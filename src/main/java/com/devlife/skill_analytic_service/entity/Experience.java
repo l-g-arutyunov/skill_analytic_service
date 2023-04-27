@@ -12,7 +12,7 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "value")
+    @Column(name = "value_exp")
     private Long valueExp;
 
     @OneToOne(targetEntity = UserSkill.class)

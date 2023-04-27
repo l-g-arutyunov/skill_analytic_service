@@ -14,9 +14,6 @@
     <include file="db/changelog/table/1.00.01-s_difficulty.xml"/>
     <include file="db/changelog/table/1.00.01-s_user_skill.xml"/>
     <include file="db/changelog/table/1.00.01-s_experience.xml"/>
-    <include file="db/changelog/table/1.00.01-s_project.xml"/>
-    <include file="db/changelog/table/1.00.01-s_worklog.xml"/>
-    <include file="db/changelog/table/1.00.01-s_worklog_basis.xml"/>
-<!--    <includeAll path="db/changelog/data"/>-->
-<!--    <include file="db/changelog/initial-data.xml"/>-->
+    <includeAll path="db/changelog/data"/>
+    <include file="db/changelog/initial-data.xml"/>
 </databaseChangeLog>

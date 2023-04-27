@@ -8,10 +8,10 @@ import java.io.Serializable;
 
 @Embeddable
 @Data
-public class SkillCategoryLinkId implements Serializable {
-    @Column(name = "skill_category_id")
+public class SkillCategorySkillId implements Serializable {
+    @Column(name = "s_skill_category_id")
     private Long skillCategoryId;
 
-    @Column(name = "skill_id")
+    @Column(name = "s_skill_id")
     private Long skillId;
 }

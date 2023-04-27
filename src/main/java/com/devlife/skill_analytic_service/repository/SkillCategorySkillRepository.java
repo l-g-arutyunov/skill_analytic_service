@@ -1,9 +1,9 @@
 package com.devlife.skill_analytic_service.repository;
 
-import com.devlife.skill_analytic_service.entity.SkillCategoryLink;
+import com.devlife.skill_analytic_service.entity.SkillCategorySkill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SkillCategoryLinkRepository extends JpaRepository<SkillCategoryLink, Long> {
+public interface SkillCategorySkillRepository extends JpaRepository<SkillCategorySkill, Long> {
 }
