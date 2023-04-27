@@ -10,18 +10,49 @@
     <changeSet id="1.00.01-s_skill_category_skill-0001" author="sthoomy" failOnError="true">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="s_skill_category_skill" schemaName="s"/>
+                <tableExists tableName="s_skill_category_skill"/>
             </not>
         </preConditions>
-        <createTable tableName="s_skill_category_skill" schemaName="s">
+        <createTable tableName="s_skill_category_skill">
             <column name="s_skill_category_id" type="bigint">
-                <constraints foreignKeyName="fk_s_skill_category_skill_s_skill_category_id" referencedTableName="s_skill_category" referencedTableSchemaName="s" referencedColumnNames="id"
+                <constraints foreignKeyName="fk_s_skill_category_id" referencedTableName="s_skill_category" referencedTableSchemaName="s" referencedColumnNames="id"
                              nullable="false"/>
             </column>
             <column name="s_skill_id" type="bigint">
-                <constraints foreignKeyName="fk_s_skill_category_skill_s_skill_id" referencedTableName="s_skill" referencedTableSchemaName="s" referencedColumnNames="id"
+                <constraints foreignKeyName="fk_s_skill_id" referencedTableName="s_skill" referencedTableSchemaName="s" referencedColumnNames="id"
                              nullable="false"/>
             </column>
         </createTable>
     </changeSet>
+
+    <changeSet id="1.00.01-s_skill_category_skill-0002" author="Bofh82" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="s_skill_category_skill"/>
+        </preConditions>
+
+        <comment>Change table name s_skill_category_skill to s_skill_category_link</comment>
+
+        <renameTable oldTableName="s_skill_category_skill" newTableName="s_skill_category_link"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-s_skill_category_skill-0003" author="Bofh82" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="s_skill_category_link" columnName="s_skill_category_id"/>
+        </preConditions>
+
+        <comment>Rename column s_skill_category_id to skill_category_id</comment>
+
+        <renameColumn tableName="s_skill_category_link" oldColumnName="s_skill_category_id" newColumnName="skill_category_id"/>
+    </changeSet>
+
+    <changeSet id="1.00.01-s_skill_category_skill-0004" author="Bofh82" runInTransaction="false">
+        <preConditions onFail="MARK_RAN">
+            <columnExists tableName="s_skill_category_link" columnName="s_skill_id"/>
+        </preConditions>
+
+        <comment>Rename column s_skill_id to skill_id</comment>
+
+        <renameColumn tableName="s_skill_category_link" oldColumnName="s_skill_id" newColumnName="skill_id"/>
+    </changeSet>
+
 </databaseChangeLog>
